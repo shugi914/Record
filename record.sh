@@ -48,10 +48,10 @@ function Insert(){
 
 function Search(){
     read -p "enter a record name : " record_name
-    result=$(grep -in  "$record_name" file.txt | sort) 
+    result=$(grep -i  "$record_name" file.txt | sort) 
     if [ -z  "$result" ]
     then
-    echo "fail"
+    echo "Failure"
     else
     echo -e  "$result\n"
     fi
@@ -69,7 +69,6 @@ function UpdateName(){
         grep -in "$record_name" file.txt
         read -p "choose line number to Update : " num 
         oldname=$(sed -n "$num"p file.txt | awk -F "," '{print $1}')
-        echo $oldname
         read -p "type the new name you want to change to it : " newname
         sed -i "s/$oldname/$newname/" file.txt
         echo Success 
